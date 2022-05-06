@@ -31,9 +31,9 @@ module "gke" {
   ip_range_pods                   = "pods"
   ip_range_services               = "services"
   name                            = "cluster"
-  project_id                      = "primal-insight-344912"
-  network                         = "network"
-  subnetwork                      = "subnet"
-  region                          = "us-central1"
+  project_id                      = module.network.project_id
+  network                         = module.network.network_name
+  subnetwork                      = module.network.subnets_names[0]
+  region                          = module.network.subnets_regions[0]
   enable_vertical_pod_autoscaling = true
 }
