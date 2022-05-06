@@ -8,7 +8,7 @@ module "network" {
     {
       subnet_name   = "subnet"
       subnet_ip     = "10.0.0.0/16"
-      subnet_region = "asia-northeast1"
+      subnet_region = "us-central1"
     },
   ]
 
@@ -16,11 +16,11 @@ module "network" {
     ("subnet") = [
       {
         range_name    = "pods"
-        ip_cidr_range = "192.168.0.0/16"
+        ip_cidr_range = "10.1.0.0/16"
       },
       {
         range_name    = "services"
-        ip_cidr_range = "192.168.0.0/16"
+        ip_cidr_range = "10.2.0.0/16"
       },
     ]
   }
@@ -34,6 +34,6 @@ module "gke" {
   project_id                      = "primal-insight-344912"
   network                         = "network"
   subnetwork                      = "subnet"
-  region                          = "asia-northeast1"
+  region                          = "us-central1"
   enable_vertical_pod_autoscaling = true
 }
